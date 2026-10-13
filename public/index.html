@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>FleetCloud | Fleet Management</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/">
+      <span class="brand-icon">F</span>
+      <span>FleetCloud<small>DELIVERY OPERATIONS</small></span>
+    </a>
+
+    <p class="nav-label">WORKSPACE</p>
+    <a class="nav-item active" href="#dashboard">▦ &nbsp; Dashboard</a>
+    <a class="nav-item" href="#deliveries">↗ &nbsp; Deliveries</a>
+
+    <div class="sidebar-bottom">
+      <span class="status-dot"></span>
+      <span>API connection</span>
+      <strong id="apiStatus">Checking</strong>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">OPERATIONS OVERVIEW</p>
+        <h1>Fleet Dashboard</h1>
+        <p class="subtitle">Track deliveries and manage daily fleet operations.</p>
+      </div>
+      <button class="primary-button" id="openForm">+ New delivery</button>
+    </header>
+
+    <section class="stats-grid" id="dashboard">
+      <article class="stat-card">
+        <span class="stat-label">Total deliveries</span>
+        <strong id="totalCount">—</strong>
+        <span class="stat-note">All recorded orders</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Pending</span>
+        <strong id="pendingCount">—</strong>
+        <span class="stat-note">Awaiting processing</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">In transit</span>
+        <strong id="transitCount">—</strong>
+        <span class="stat-note">Currently on the way</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Delivered</span>
+        <strong id="deliveredCount">—</strong>
+        <span class="stat-note">Completed orders</span>
+      </article>
+    </section>
+
+    <section class="panel" id="deliveries">
+      <div class="panel-header">
+        <div>
+          <h2>Delivery management</h2>
+          <p>Review orders and update their progress.</p>
+        </div>
+        <button class="secondary-button" id="refreshButton">↻ Refresh</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ORDER</th>
+              <th>CUSTOMER</th>
+              <th>ROUTE</th>
+              <th>DRIVER</th>
+              <th>STATUS</th>
+              <th>UPDATE STATUS</th>
+            </tr>
+          </thead>
+          <tbody id="deliveryRows">
+            <tr><td colspan="6">Loading deliveries...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">FleetCloud · Cloud-based delivery management</p>
+    </section>
+
+    <section class="panel form-panel" id="formPanel" hidden>
+      <div class="panel-header">
+        <div>
+          <h2>Create delivery</h2>
+          <p>Enter the order and assignment details.</p>
+        </div>
+        <button class="secondary-button" id="closeForm">Close</button>
+      </div>
+
+      <form id="deliveryForm">
+        <label>Customer name<input name="customer" required maxlength="120" placeholder="e.g. ABC Electronics"></label>
+        <label>Pickup location<input name="pickup" required maxlength="200" placeholder="e.g. Chennai Warehouse"></label>
+        <label>Destination<input name="destination" required maxlength="200" placeholder="e.g. Tambaram"></label>
+        <label>Assigned driver<input name="driver" required maxlength="120" placeholder="e.g. Arun Kumar"></label>
+        <div class="form-actions">
+          <button class="primary-button" type="submit">Create delivery</button>
+        </div>
+      </form>
+      <p id="formMessage" role="status"></p>
+    </section>
+
+    <footer>FleetCloud · Cloud-based delivery management</footer>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
