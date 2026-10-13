@@ -12,7 +12,10 @@ const PORT = process.env.PORT || 3000;
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    ca: fs.readFileSync(process.env.DATABASE_SSL_CA, "utf8"),
+    ca: fs.readFileSync(
+  process.env.DATABASE_SSL_CA || path.join(__dirname, "prod-ca-2021.crt"),
+  "utf8"
+),
     rejectUnauthorized: true
   }
 });
